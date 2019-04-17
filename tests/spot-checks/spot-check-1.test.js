@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import assert from 'assert';
 import App from '../../src/App';
-import renderer from 'react-test-renderer';
 import Adapter from 'enzyme-adapter-react-16';
-import { wrap } from 'module';
 import { MemoryRouter } from 'react-router-dom';
-import { mount, render, shallow, configure} from 'enzyme';
+import { mount, configure} from 'enzyme';
 import Company from '../../src/components/Company';
-import SubCompany from '../../src/components/Subcompany';
 
 configure({ adapter: new Adapter() });
 
@@ -18,18 +14,20 @@ describe("spotcheck1", () => {
         ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
         ReactDOM.unmountComponentAtNode(div);
       });    
-      it('You must render a div on the page with the word Tesla', () => {
+      it('You must render an h4 element on the page with the word Tesla', () => {
         const wrapper = mount(<App />);
         let text = wrapper.find('h4')
-        expect(text.exists(), 'There should be a div rendered on the page').toBeTruthy()
-        expect(text.text(), "The text in the h4 should be 'Tesla'").toBe('Tesla')
+        expect(text.exists(), 'could not find h4 element').toBeTruthy()
+        expect(text.first().text(), "The text in the h4 should be 'Tesla'").toBe('Tesla')
+        let spotcheck1Div= wrapper.find('#spotcheck-1')
+        console.log(spotcheck1Div)
+      expect(spotcheck1Div.children(), "You should only render one h4 element").toHaveLength(2)
       });
       it('The App component should render the Company component with props', () => {
         const wrapper = mount(<App />);
         let companyComponent = wrapper.find(Company);
         expect(companyComponent.exists(), 'You must create a Component called Company').toBeTruthy()
-        expect(companyComponent.props()).toEqual({ name: 'Tesla', revenue: 140})
-        expect(wrapper, 'The App component must render the Company component').toHaveLength(1);
+        expect(companyComponent.first().props(), 'props were not passed accurately').toEqual({ name: 'Tesla', revenue: 140})
     })
     it('The Company component should render the SubCompany component', () => {
         const wrapper = mount(<Company name='Tesla' />);
