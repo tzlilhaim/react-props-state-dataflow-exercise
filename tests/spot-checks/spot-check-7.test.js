@@ -10,7 +10,7 @@ import Calendar from '../../src/components/Calendar';
 
 configure({ adapter: new Adapter() });
 
-describe("spotcheck6", () => {
+describe("spotcheck7", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
@@ -20,7 +20,7 @@ describe("spotcheck6", () => {
         const wrapper = mount(<App />);
         let calendarComponent = wrapper.find(Calendar);
         expect(calendarComponent.exists(), 'You must create a Component called Calendar').toBeTruthy()
-        expect(calendarComponent.first().props()).toEqual({
+        expect(calendarComponent.first().props(), 'the reservations array must be passed as props').toEqual({
             reservations: [
                 { day: "Monday", time: 2000, name: "Earl" },
                 { day: "Monday", time: 1845, name: "Ella" },
@@ -32,7 +32,7 @@ describe("spotcheck6", () => {
         const wrapper = mount(<App />);
         let registerComponent = wrapper.find(Register);
         expect(registerComponent.exists(), 'You must create a Component called Register').toBeTruthy()
-        expect(registerComponent.first().props()).toEqual({
+        expect(registerComponent.first().props(), 'the reservations array must be passed as props').toEqual({
             reservations: [
                 { day: "Monday", time: 2000, name: "Earl" },
                 { day: "Monday", time: 1845, name: "Ella" },
@@ -45,15 +45,19 @@ describe("spotcheck6", () => {
         let registerComponent = wrapper.find(Register);
         expect(registerComponent.first().props().reservations, 'props passed to the Register component did not utilize the state').toEqual(wrapper.state().reservations)
         let calendarComponent = wrapper.find(Calendar);
-        expect(calendarComponent.first().props().reservations, 'props passed to the Register component did not utilize the state').toEqual(wrapper.state().reservations)
+        expect(calendarComponent.first().props().reservations, 'props passed to the Calendar component did not utilize the state').toEqual(wrapper.state().reservations)
     })
     it('You must render a div on the page for each reservation', () => {
         const wrapper = mount(<App />);
-        let spotcheck6 = wrapper.find('#spotcheck-7').children()
-        expect(spotcheck6).toHaveLength(3)
-        expect(spotcheck6, 'There should be three h4 elements rendered on the page').toHaveLength(4)
-        expect(spotcheck6.at(1).text(), "The first h4 should have the text 'Tesla'").toBe('Tesla')
-        expect(spotcheck6.at(2).text(), "The second h4 should have the text 'Microsoft'").toBe('Microsoft')
-        expect(spotcheck6.at(3).text(), "The third h4 should have the text 'Google'").toBe('Google')
+        let spotcheck7 = wrapper.find('#spotcheck-7').children()
+        expect(spotcheck7).toHaveLength(3)
+        expect(spotcheck7.at(1).children().html(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("Earl has a reservation on Monday @ 2000")
+        expect(spotcheck7.at(1).children().html(), "could not find 'Ella has a reservation on Monday @ 1845' rendered on the page").toContain('Ella has a reservation on Monday @ 1845')
+        expect(spotcheck7.at(1).children().html(), "could not find 'Linda has a reservation on Tuesday @ 1930' rendered on the page").toContain('Linda has a reservation on Tuesday @ 1930')
+        expect(spotcheck7.at(1).children().html(), "could not find 'Anni has a reservation on Wednesday @ 2015' rendered on the page").toContain('Anni has a reservation on Wednesday @ 2015')
+        expect(spotcheck7.at(2).children().html(), "could not find 'Monday @ 2000' rendered on the page").toContain("Monday @ 2000")
+        expect(spotcheck7.at(2).children().html(), "could not find 'Monday @ 1845' rendered on the page").toContain('Monday @ 1845')
+        expect(spotcheck7.at(2).children().html(), "could not find 'Tuesday @ 1930' rendered on the page").toContain('Tuesday @ 1930')
+        expect(spotcheck7.at(2).children().html(), "could not find 'Wednesday @ 2015' rendered on the page").toContain('Wednesday @ 2015')
     });
 })
