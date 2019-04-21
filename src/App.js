@@ -32,17 +32,11 @@ class App extends Component {
       currentPage: "Landing"
     }
   }
-  generateCompanyTags(companies) {
-    let companyTags = []
-    for (let c of companies) {
-      companyTags.push(<Company name={c.name} revenue={c.revenue} />)
-    }
-    return companyTags
-  }
+  // SPOT-CHECK-2: 
+  //  your generateCompanyTags function here 
 
-  upperCase(name) {
-    return name.toUpperCase()
-  }
+  // SPOT-CHECK-3:
+  // your upperCase function here
 
   render() {
 
@@ -56,56 +50,47 @@ class App extends Component {
     return (<div>
       <div className="exercise" id="spotcheck-1">
         <label>spotcheck-1:</label>
-        <Company name={companies[0].name} revenue={companies[0].revenue} />
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-2">
         <label>spotcheck-2:</label>
-        {this.generateCompanyTags(companies)}
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-3">
         <label>spotcheck-3:</label>
-        {companies.map(c =>
-          <Company
-            name={this.upperCase(c.name)}
-            revenue={c.revenue} />)}
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-4">
         <label>spotcheck-4:</label>
-        <Wardrobe />
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-5">
         <label>spotcheck-5:</label>
-        <Wardrobe2 />
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-6">
         <label>spotcheck-6:</label>
-        {this.state.companies.map(c => <Company name={c.name} revenue={c.revenue} />)}
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="spotcheck-7">
         <label>spotcheck-7:</label>
-        <Calendar reservations={this.state.reservations} />
-        <Register reservations={this.state.reservations} />
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="ex-1">
         <label>Exercise 1:</label>
-        <Hudini />
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="ex-2">
         <label>Exercise 2:</label>
-        <Landing store = {this.state.store} user={this.state.user}/>
-        <Home store={this.state.store}/>
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="ex-3">
         <label>Exercise 3:</label>
-        {this.state.currentPage==="Landing"?
-        <Landing store = {this.state.store} user={this.state.user}/>:
-        <Home discount={this.state.shouldDiscount} store={this.state.store}/>}
+        {/* YOUR CODE HERE */}
       </div>
       <div className="exercise" id="ex-4">
         <label>Exercise 4:</label>
-        {this.state.currentPage==="Landing"?
-        <Landing store = {this.state.store} user={this.state.user}/>:
-        <Home discount={this.state.shouldDiscount} store={this.state.store}/>}
+        {/* YOUR CODE HERE */}
       </div>
     </div>
     )

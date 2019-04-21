@@ -8,7 +8,8 @@ class Hudini extends Component {
         }
     }
     render() {
-        return this.state.show? <div>Now you see me</div>:<div>Now you don't</div>
+        return         {/* YOUR CODE HERE */}
+
     }
   }
 

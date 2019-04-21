@@ -35,7 +35,6 @@ describe("spotcheck3", () => {
     expect(companyComponent.first().props(), 'props were not passed accurately').toEqual({name: "mock", revenue: 140})
     expect(companyComponent.at(1).props(), 'props were not passed accurately').toEqual({name: "mock", revenue: 300})
     expect(companyComponent.at(2).props(), 'props were not passed accurately').toEqual({name: "mock", revenue: 600})
-
 })
 })
 
