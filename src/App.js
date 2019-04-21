@@ -95,6 +95,18 @@ class App extends Component {
         <Landing store = {this.state.store} user={this.state.user}/>
         <Home store={this.state.store}/>
       </div>
+      <div className="exercise" id="ex-3">
+        <label>Exercise 3:</label>
+        {this.state.currentPage==="Landing"?
+        <Landing store = {this.state.store} user={this.state.user}/>:
+        <Home discount={this.state.shouldDiscount} store={this.state.store}/>}
+      </div>
+      <div className="exercise" id="ex-4">
+        <label>Exercise 4:</label>
+        {this.state.currentPage==="Landing"?
+        <Landing store = {this.state.store} user={this.state.user}/>:
+        <Home discount={this.state.shouldDiscount} store={this.state.store}/>}
+      </div>
     </div>
     )
   }
