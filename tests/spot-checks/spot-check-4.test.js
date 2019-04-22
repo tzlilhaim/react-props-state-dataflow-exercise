@@ -9,6 +9,8 @@ import Article from '../../src/components/Article';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("spotcheck4", () => {
   it('Application should render without crashing', () => {
     const div = document.createElement('div');
@@ -18,6 +20,7 @@ describe("spotcheck4", () => {
   it('You must render a div on the page for each wardrobe object ', () => {
     const wrapper = mount(<App />);
     let spotcheck4 = wrapper.find('#spotcheck-4').find('div')
+    // expected vs actual + look for specific element and not children
     expect(spotcheck4, 'There should be 5 divs rendered').toHaveLength(6)
     expect(spotcheck4.at(1).text(), "The first div should have the text 'red shirt'").toBe('red shirt')
     expect(spotcheck4.at(2).text(), "The second div should have the text 'blue shirt'").toBe('blue shirt')
@@ -35,6 +38,7 @@ describe("spotcheck4", () => {
     const wrapper = mount(<Wardrobe />);
     let articleComponent = wrapper.find(Article);
     expect(articleComponent.exists(), 'You must create a Component called Article').toBeTruthy()
+        // expected vs actual + look for specific element and not children
     expect(articleComponent, 'The Article component must render five divs').toHaveLength(5);
     expect(articleComponent.first().props(), 'props were not passed accurately').toEqual({ info: { type: "shirt", color: "red", size: "Medium" } })
     expect(articleComponent.at(1).props(), 'props were not passed accurately').toEqual({ info: { type: "shirt", color: "blue", size: "Medium" } })

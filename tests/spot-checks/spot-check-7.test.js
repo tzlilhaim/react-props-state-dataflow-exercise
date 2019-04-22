@@ -10,6 +10,8 @@ import Calendar from '../../src/components/Calendar';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("spotcheck7", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
@@ -51,6 +53,7 @@ describe("spotcheck7", () => {
         const wrapper = mount(<App />);
         let spotcheck7 = wrapper.find('#spotcheck-7').children()
         expect(spotcheck7).toHaveLength(3)
+            // expected vs actual + look for specific element and not children
         expect(spotcheck7.at(1).children().html(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("Earl has a reservation on Monday @ 2000")
         expect(spotcheck7.at(1).children().html(), "could not find 'Ella has a reservation on Monday @ 1845' rendered on the page").toContain('Ella has a reservation on Monday @ 1845')
         expect(spotcheck7.at(1).children().html(), "could not find 'Linda has a reservation on Tuesday @ 1930' rendered on the page").toContain('Linda has a reservation on Tuesday @ 1930')

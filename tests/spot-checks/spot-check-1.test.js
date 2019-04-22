@@ -16,12 +16,13 @@ describe("spotcheck1", () => {
       });    
       it('You must render an h4 element on the page with the word Tesla', () => {
         const wrapper = mount(<App />);
+        const expectedText = "Tesla";
         let text = wrapper.find('h4')
         expect(text.exists(), 'could not find h4 element').toBeTruthy()
-        expect(text.first().text(), "The text in the h4 should be 'Tesla'").toBe('Tesla')
+        const actualText = text.first().text();
+        expect(text.first().text(), `The text in the h4 should be '${expectedText}'. Instead, we found ${actualText}`).toBe(expectedText)
         let spotcheck1Div= wrapper.find('#spotcheck-1')
-        console.log(spotcheck1Div)
-      expect(spotcheck1Div.children(), "You should only render one h4 element").toHaveLength(2)
+        expect(spotcheck1Div.children(), "You should only render one h4 element").toHaveLength(2)
       });
       it('The App component should render the Company component with props', () => {
         const wrapper = mount(<App />);

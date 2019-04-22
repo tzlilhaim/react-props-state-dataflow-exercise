@@ -11,13 +11,16 @@ configure({ adapter: new Adapter() });
 describe("spotcheck3", () => {
   it('Application should render without crashing', () => {
     const div = document.createElement('div');
+    // remove memoryrouter
     ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  it("You must render an h4 element on the page for each Comppany, containing the company's name in capital letters", () => {
+  it("You must render an h4 element on the page for each Company, containing the company's name in capital letters", () => {
     const wrapper = mount(<App />);
     let spotcheck3Div = wrapper.find('#spotcheck-3')
+    // look for specific h4 element
     expect(spotcheck3Div.children(), 'There should be three h4 elements rendered on the page').toHaveLength(4)
+    // expected vs. actual
     expect(spotcheck3Div.children().at(1).text(), "The first h4 should have the text 'TESLA'").toBe('TESLA')
     expect(spotcheck3Div.children().at(2).text(), "The second h4 should have the text 'MICROSOFT'").toBe('MICROSOFT')
     expect(spotcheck3Div.children().at(3).text(), "The third h4 should have the text 'GOOGLE'").toBe('GOOGLE')

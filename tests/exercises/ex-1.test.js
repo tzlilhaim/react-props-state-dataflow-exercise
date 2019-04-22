@@ -9,6 +9,8 @@ import Hudini from '../../src/components/Hudini';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("exercise1", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
@@ -25,7 +27,7 @@ describe("exercise1", () => {
         let div = wrapper.find('div')
         expect(div, 'could not find a div rendered on the page').toHaveLength(1)
         wrapper.setState({show: false}, function(){
-    
+        // expected vs actual
             expect(div.text(), "When the state's show property is set to false, the text rendered should be 'Now you don't'").toBe("Now you don't")
         })
         wrapper.setState({show: true}, function(){

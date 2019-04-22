@@ -8,6 +8,8 @@ import Company from '../../src/components/Company';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("spotcheck6", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
@@ -17,6 +19,7 @@ describe("spotcheck6", () => {
     it('You must render an h4 element on the page for each Comppany', () => {
         const wrapper = mount(<App />);
         let spotcheck6 = wrapper.find('#spotcheck-6').children()
+            // expected vs actual + look for specific element and not children
         expect(spotcheck6.find('h4'), 'could not find h4 elements').toHaveLength(3)
         expect(spotcheck6, 'There should be three h4 elements rendered on the page').toHaveLength(4)
         expect(spotcheck6.at(1).text(), "The first h4 should have the text 'Tesla'").toBe('Tesla')
@@ -26,6 +29,7 @@ describe("spotcheck6", () => {
     it("The App component's state should contain an array called companies", () => {
         const wrapper = mount(<App />);
         let stateCompanies = wrapper.state().companies
+        // print actual
         expect(stateCompanies, 'this.state.companies should be equal to the company array').toEqual([
             { name: "Tesla", revenue: 140 },
             { name: "Microsoft", revenue: 300 },

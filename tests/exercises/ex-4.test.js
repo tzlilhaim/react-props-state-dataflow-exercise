@@ -10,6 +10,8 @@ import Item from '../../src/components/Item';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("exercise4", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
@@ -23,6 +25,7 @@ describe("exercise4", () => {
         let ex4 = wrapper.find('#ex-4')
         let homeComponent = ex4.find(Home)
         expect(homeComponent.exists(), "could not find a Home component rendered in exercise 4").toBeTruthy()
+        // check that children exist first - they might not be there
         expect(homeComponent.children().first().text()).toContain("800")
         expect(homeComponent.children().at(1).text()).toContain("230")
 
@@ -33,6 +36,7 @@ describe("exercise4", () => {
         wrapper.setState({shouldDiscount: true})
         let ex4 = wrapper.find('#ex-4')
         let homeComponent = ex4.find(Home)
+        // check that children exist first
         expect(homeComponent.exists(), "could not find a Home component rendered in App when currentPage is 'Home'").toBeTruthy()
         expect(homeComponent.children().first().text()).toContain("640")
         expect(homeComponent.children().at(1).text()).toContain("92")

@@ -17,7 +17,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^23.4.2",
-    "jest-expect-message": "^1.0.0",
+    "jest-expect-message": "github:Elevationacademy/jest-expect-message",
     "react-test-renderer": "^16.4.2",
     "jest-transform-stub": "^1.0.0"
   },

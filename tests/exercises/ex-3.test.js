@@ -10,6 +10,8 @@ import Item from '../../src/components/Item';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("exercise3", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');

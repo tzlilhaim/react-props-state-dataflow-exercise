@@ -11,6 +11,7 @@ configure({ adapter: new Adapter() });
 describe("spotcheck2", () => {
   it('Application should render without crashing', () => {
     const div = document.createElement('div');
+    // remove memoryrouter
     ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });

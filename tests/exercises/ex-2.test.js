@@ -10,9 +10,12 @@ import Item from '../../src/components/Item';
 
 configure({ adapter: new Adapter() });
 
+// make sure that the spot check text in the learnapp details all the function names, divs, classes etc
+// that are specified within the test
 describe("exercise2", () => {
     it('Application should render without crashing', () => {
         const div = document.createElement('div');
+        // remove memoryrouter
         ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, div);
         ReactDOM.unmountComponentAtNode(div);
     });
@@ -30,6 +33,7 @@ describe("exercise2", () => {
         const wrapper = mount(<Landing user="mockUser" store={[{item: "mockItem", price: 3099, discount: 0.05, hottest: true}]} />);
         let div = wrapper.find('div')
         expect(div, 'could not find a div rendered on the page').toHaveLength(1)
+                // expected vs actual
         expect(div.text(), 'could not find Welcome text rendered by Landing component').toContain('Welcome')
         expect(div.text(), "the user's name should be passed as props to the Landing component from the App's state").toContain(wrapper.props().user)
         expect(div.text(),"the hottest item should be rendered by accessing props passed from the Apps's state").toContain('mockItem')
