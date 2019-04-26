@@ -13,10 +13,6 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      companies: [
-        { name: "Tesla", revenue: 140 },
-        { name: "Microsoft", revenue: 300 },
-        { name: "Google", revenue: 600 }],
       reservations: [
         { day: "Monday", time: 2000, name: "Earl" },
         { day: "Monday", time: 1845, name: "Ella" },
