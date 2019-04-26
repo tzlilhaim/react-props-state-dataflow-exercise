@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 class Hudini extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state ={
-           show: false 
+        this.state = {
+            show: false
         }
     }
     render() {
-        return         {/* your code here */}
+        return {/* your code here */ }
 
     }
-  }
+}
 
-  export default Hudini
+export default Hudini
