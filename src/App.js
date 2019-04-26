@@ -33,10 +33,10 @@ class App extends Component {
     }
   }
   // SPOT-CHECK-2: 
-  //  your generateCompanyTags function here 
+  //  your generateCompanyTags method here 
 
   // SPOT-CHECK-3:
-  // your upperCase function here
+  // your upperCase method here
 
   render() {
 
