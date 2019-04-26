@@ -5,7 +5,7 @@ class Home extends Component {
     
     render(){
         return 
-                {/* YOUR CODE HERE */}
+                {/* your code here */}
 
     }
 }

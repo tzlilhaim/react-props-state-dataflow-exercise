@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Article extends Component {
     render() {
-      return         {/* YOUR CODE HERE */}
+      return         {/* your code here */}
 
     }
   }

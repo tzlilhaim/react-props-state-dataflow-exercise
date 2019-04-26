@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class Landing extends Component {
-        /* YOUR CODE HERE */
+        /* your code here */
 
 
     render() {
-        return         {/* YOUR CODE HERE */}
+        return         {/* your code here */}
 
     }
 }

@@ -12,7 +12,7 @@ class Wardrobe2 extends Component {
       ]
   
       return
-              {/* YOUR CODE HERE */}
+              {/* your code here */}
 
      }
   }

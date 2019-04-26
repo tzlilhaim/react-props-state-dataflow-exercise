@@ -11,7 +11,7 @@ class Wardrobe extends Component {
         { type: "accessory", color: "lilac", size: "" },
       ]
   
-      return         {/* YOUR CODE HERE */}
+      return         {/* your code here */}
 
     }
   }

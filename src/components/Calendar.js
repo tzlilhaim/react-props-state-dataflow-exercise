@@ -4,7 +4,7 @@ class Calendar extends Component {
     render() {
       return (
         <div id="calendar">
-              {/* YOUR CODE HERE */}
+              {/* your code here */}
 
         </div>
       )
