@@ -27,9 +27,9 @@ describe("spotcheck1", () => {
         const wrapper = mount(<App />);
         let companyComponent = wrapper.find(Company);
         expect(companyComponent.exists(), 'You must create a Component called Company').toBeTruthy()
-        const expectedProps = { name: 'Tesla', revenue: 140}
-        const actualProps = companyComponent.first().props()
-        expect(actualProps, `props were not passed accurately; expected ${JSON.stringify(expectedProps)}, instead found ${JSON.stringify(actualProps)}`).toEqual(expectedProps)
+        const expectedName = "Tesla"
+        const actualName = companyComponent.first().props().name
+        expect(actualName, `The name prop was not passed accurately; expected ${expectedName}, instead found ${actualName}`).toEqual(expectedName)
     })
     it('The Company component should render the SubCompany component', () => {
         const wrapper = mount(<Company name='Tesla' />);
