@@ -42,8 +42,8 @@ describe("spotcheck4", () => {
   it('The Wardrobe component should render the Article component with props', () => {
     const wrapper = mount(<Wardrobe />);
     let articleComponent = wrapper.find(Article);
-    expect(articleComponent.exists(), 'You must create a Component called Article').toBeTruthy()
-    expect(articleComponent, 'The Article component must render five divs').toHaveLength(5);
+    expect(articleComponent.exists(), 'The Wardrobe component should load some Article components').toBeTruthy()
+    expect(articleComponent, 'The Wardrobe component should create 5 instances of the Article component').toHaveLength(5);
     let expectProps1 = { info: { type: "shirt", color: "red", size: "Medium" } }
     let expectProps2 = { info: { type: "shirt", color: "blue", size: "Medium" } }
     let expectProps3 = { info: { type: "pants", color: "blue", size: "Medium" } }

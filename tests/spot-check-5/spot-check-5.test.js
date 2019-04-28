@@ -28,8 +28,8 @@ describe("spotcheck5", () => {
   it('The Wardrobe2 component should render the Article component with props', () => {
     const wrapper = mount(<Wardrobe2 />);
     let articleComponent = wrapper.find(Article);
-    expect(articleComponent.exists(), 'Could not find an Article in the Wardrobe2 component').toBeTruthy()
-    expect(articleComponent, 'The Article component must render two divs').toHaveLength(2);
+    expect(articleComponent.exists(), 'Wardrobe2 did not load any Article components').toBeTruthy()
+    expect(articleComponent, 'The Article component must be instantiated twice by Wardrobe2').toHaveLength(2);
     let expectProps1 = { info: { type: "shirt", color: "blue", size: "Medium" } }
     let expectProps2 = { info: { type: "pants", color: "blue", size: "Medium" } }
     let actualProps1 = articleComponent.first().props()
