@@ -37,12 +37,12 @@ describe("spotcheck6", () => {
         expect(actualState, 'Could not find a companies property in your state').toBeDefined()
         expect(actualState, `this.state.companies should be equal to ${expectedState}, instead found ${actualState}`).toEqual(expectedState)
     })
-    it("You must use the state to render the companies", () => {
+    it("You must use the state to render the each Company component", () => {
         const wrapper = mount(<App />);
         wrapper.setState({ companies: [{ name: "mock1" }, { name: "mock2" }] }, function () {
-            let spotcheckMock = wrapper.find('#spotcheck-6').children()
-            expect(spotcheckMock.at(1).html(), 'The data that was rendered was not passed from the state').toBe("<h4>mock1</h4>")
-            expect(spotcheckMock.at(2).html(), 'The data that was rendered was not passed from the state').toBe("<h4>mock2</h4>")
+            let spotcheckMock = wrapper.find('#spotcheck-6').find(Company)
+            expect(spotcheckMock.at(0).html().includes("mock1"), "Make sure you are `map`ing through *state*'s companies array to create each instance of a Company component").toBeTruthy()
+            expect(spotcheckMock.at(1).html().includes("mock2"), "Make sure you are `map`ing through *state*'s companies array to create each instance of a Company component").toBeTruthy()
         })
     })
 })
