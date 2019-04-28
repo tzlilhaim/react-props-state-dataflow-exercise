@@ -34,6 +34,6 @@ describe("spotcheck2", () => {
     }
     const wrapper = mount(<App />);
     let spotcheckMock = wrapper.find('#spotcheck-2')
-    expect(spotcheckMock.children('div'), "generateCompanyTags must be returned in your App's render function").toHaveLength(1)
+    expect(spotcheckMock.find('#mock'), "generateCompanyTags must be returned in your App's render function").toHaveLength(1)
   })
 })
