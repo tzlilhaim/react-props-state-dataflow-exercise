@@ -20,12 +20,19 @@ describe("exercise3", () => {
         let landingComponent = ex3.find(Landing)
         wrapper.setState({currentPage: "Landing"})
         expect(landingComponent.exists(), "could not find a Landing component rendered in App when currentPage is 'Landing'").toBeTruthy()
+
+        let homeComponent = ex3.find(Home)
+        expect(homeComponent.exists(), "should not load Home instance if `currentPage` is 'Landing'").toBeFalsy()
     });
-    it("App should render your Home component when the currentPage property inside of App's state is set to 'Home'", () => {
+    it("App should render your Home component when the currentPage property is not 'Landing'", () => {
         const wrapper = mount(<App />);
-        wrapper.setState({currentPage: "Home"})
+        wrapper.setState({currentPage: "dummy"})
         let ex3 = wrapper.find('#ex-3')
         let homeComponent = ex3.find(Home)
         expect(homeComponent.exists(), "could not find a Home component rendered in App when currentPage is 'Home'").toBeTruthy()
+        
+        let landingComponent = ex3.find(Landing)
+        expect(landingComponent.exists(), "should not load Landing instance unless `currentPage` is 'Landing'").toBeFalsy()
+
     });
 })
