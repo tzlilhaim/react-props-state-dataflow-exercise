@@ -16,9 +16,9 @@ describe("exercise3", () => {
     });
     it("App should render your Landing component when the currentPage property inside of App's state is set to 'Landing'", () => {
         const wrapper = mount(<App />);
+        wrapper.setState({currentPage: "Landing"})
         let ex3 = wrapper.find('#ex-3')
         let landingComponent = ex3.find(Landing)
-        wrapper.setState({currentPage: "Landing"})
         expect(landingComponent.exists(), "could not find a Landing component rendered in App when currentPage is 'Landing'").toBeTruthy()
 
         let homeComponent = ex3.find(Home)
