@@ -29,21 +29,13 @@ describe("exercise1", () => {
 
     it('The Hudini component should render a div with text', () => {
         const wrapper = mount(<Hudini />);
-        let expected1 = "Now you don't".toLowerCase()
-        let expected2 = 'Now you see me'.toLowerCase()
-        
-        wrapper.setState({ show: false }, function () {
-            let div = wrapper.find('div')
-            expect(div, 'Hudini should render a single div').toHaveLength(1)
-            let actual = div.text().toLowerCase()
-            expect(actual, `When the state's show property is set to false, the text rendered should be '${expected1}', instead found '${actual}`).toContain(expected1)
-        })
-
+        let exercise1 = wrapper.find(Hudini)
+        let initial = exercise1.text()
+        console.log(initial)
         wrapper.setState({ show: true }, function () {
-            let div = wrapper.find('div')
-            expect(div, 'Hudini should render a single div').toHaveLength(1)
-            let actual = div.text().toLowerCase()
-            expect(actual, `When the state's show property is set to true, the text rendered should be '${expected2}', instead found '${actual}`).toContain(expected2)
+            let actual = exercise1.text()
+            console.log(actual)
+            expect(initial, `When the state's show property is set to false, the text should be different than when it is set to true`).not.toEqual(actual)
         })
     })
 })
