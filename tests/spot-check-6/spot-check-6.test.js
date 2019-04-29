@@ -13,7 +13,7 @@ describe("spotcheck6", () => {
         ReactDOM.render(<App />, div);
         ReactDOM.unmountComponentAtNode(div);
     });
-    it('You must render an h4 element on the page for each Comppany', () => {
+    it('You must render an h4 element on the page for each Company', () => {
         const wrapper = mount(<App />);
         let spotcheck6 = wrapper.find('#spotcheck-6').children().find('h4')
         expect(spotcheck6, 'could not find h4 elements').toHaveLength(3)
