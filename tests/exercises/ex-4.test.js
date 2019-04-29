@@ -32,15 +32,20 @@ describe("exercise4", () => {
     it("When the shouldDiscount property is set to true, the Home component should display the discounted prices: `price * (1 - discount)`", () => {
         const wrapper = mount(<App />);
         wrapper.setState({ currentPage: "Home", shouldDiscount: true }, function () {
+
             let ex4 = wrapper.find('#ex-4')
             let homeComponent = ex4.find(Home)
             expect(homeComponent.exists(), "could not find a Home component rendered in App when currentPage is 'Home'").toBeTruthy()
-            let expected1 = "640"
-            let expected2 = "92"
-            let actual1 = homeComponent.children().first().text()
-            let actual2 = homeComponent.childAt(1).text()
-            expect(actual1, `The price of the XSPS ProPlayer with a discount should be ${expected1}, instead found ${actual1}`).toContain(expected1)
-            expect(actual2, `The price of the Gizem Backwatch with a discount should be ${expected2}, instead found ${actual2}`).toContain(expected2)
+
+            let expected1 = 640
+            let expected2 = 92
+            let actual1 = Number(homeComponent.children().first().text().replace(/[^0-9]/g, ''))
+            let actual2 = Number(homeComponent.childAt(1).text().replace(/[^0-9]/g, ''))
+
+            expect(actual1, `The price of the XSPS ProPlayer with a discount should be ${expected1}, instead found ${actual1}`).toBeGreaterThanOrEqual(expected1 - 10)
+            expect(actual1, `The price of the XSPS ProPlayer with a discount should be ${expected1}, instead found ${actual1}`).toBeLessThanOrEqual(expected1 + 10)
+            expect(actual2, `The price of the Gizem Backwatch with a discount should be ${expected2}, instead found ${actual2}`).toBeGreaterThanOrEqual(expected2 - 10)
+            expect(actual2, `The price of the Gizem Backwatch with a discount should be ${expected2}, instead found ${actual2}`).toBeLessThanOrEqual(expected2 + 10)
         })
     });
 })

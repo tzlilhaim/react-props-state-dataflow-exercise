@@ -21,25 +21,17 @@ describe("spotcheck3", () => {
     expect(company, 'There should be three h4 elements rendered on the page').toHaveLength(3)
     const expectTesla = 'TESLA'
     const actualTesla = company.first().text()
-    expect(actualTesla, `The first h4 should have the text '${expectTesla}', instead found '${actualTesla}'`).toBe(expectTesla)
+    expect(actualTesla, `The first h4 should have the text '${expectTesla}', instead found '${actualTesla}'`).toContain(expectTesla)
     const expectMicrosoft = 'MICROSOFT'
     const actualMicrosoft = company.at(1).text()
-    expect(actualMicrosoft, `The first h4 should have the text '${expectMicrosoft}', instead found '${actualMicrosoft}'`).toBe(expectMicrosoft)
+    expect(actualMicrosoft, `The first h4 should have the text '${expectMicrosoft}', instead found '${actualMicrosoft}'`).toContain(expectMicrosoft)
     const expectGoogle = 'GOOGLE'
     const actualGoogle = company.at(2).text()
-    expect(actualGoogle, `The first h4 should have the text '${expectGoogle}', instead found '${actualGoogle}'`).toBe(expectGoogle)
+    expect(actualGoogle, `The first h4 should have the text '${expectGoogle}', instead found '${actualGoogle}'`).toContain(expectGoogle)
   });
-  it("The upperCase function should be invoked in the props", () => {
-    expect(App.prototype.upperCase, 'You must define the upperCase method in your App component').toBeDefined()
-    App.prototype.upperCase = function () {
-      return "mock"
-    }
+  it("The upperCase method should be defined in App - you should use this method to uppercase your companies", () => {
     const wrapper = mount(<App />);
-    let spotcheckMock = wrapper.find('#spotcheck-3')
-    let companyComponent = spotcheckMock.find(Company);
-    expect(companyComponent.exists(), 'You must render a Component called Company inside of #spotcheck-3').toBeTruthy()
-    expect(companyComponent.first().props(), 'props were not passed with the upperCase function').toEqual({name: "mock", revenue: 140})
-    expect(companyComponent.at(1).props(), 'props were not passed with the upperCase function').toEqual({name: "mock", revenue: 300})
-    expect(companyComponent.at(2).props(), 'props were not passed with the upperCase function').toEqual({name: "mock", revenue: 600})
-})
+    expect(typeof wrapper.instance().upperCase, 'You must define the upperCase method in your App component').toBe("function")
+    //cannot find a generic, loose way to check if arrow func was called.
+  })
 })

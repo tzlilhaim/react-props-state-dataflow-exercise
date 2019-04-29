@@ -29,12 +29,9 @@ describe("exercise1", () => {
 
     it('The Hudini component should render a div with text', () => {
         const wrapper = mount(<Hudini />);
-        let exercise1 = wrapper.find(Hudini)
-        let initial = exercise1.text()
-        console.log(initial)
+        let initial = wrapper.text()
         wrapper.setState({ show: true }, function () {
-            let actual = exercise1.text()
-            console.log(actual)
+            let actual = wrapper.text()
             expect(initial, `When the state's show property is set to false, the text should be different than when it is set to true`).not.toEqual(actual)
         })
     })

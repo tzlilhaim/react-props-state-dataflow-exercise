@@ -19,8 +19,8 @@ describe("spotcheck1", () => {
         let spotcheck1Div= wrapper.find('#spotcheck-1')
         let teslaText = spotcheck1Div.find('h4')
         expect(teslaText.exists(), 'could not find h4 element').toBeTruthy()
-        const actualText = teslaText.first().text();
-        expect(actualText, `The text in the h4 should be '${expectedText}'. Instead, we found '${actualText}'`).toBe(expectedText)
+        const actualText = teslaText.html()
+        expect(actualText, `The text in the h4 should contain '${expectedText}'.`).toContain(expectedText)
         expect(teslaText, "You should only render one h4 element").toHaveLength(1)
       });
       it('The App component should render the Company component with props', () => {
