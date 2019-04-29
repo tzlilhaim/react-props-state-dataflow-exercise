@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from '../../src/App';
 import Adapter from 'enzyme-adapter-react-16';
 import { mount, configure } from 'enzyme';
+import Company from '../../src/components/Company';
 
 configure({ adapter: new Adapter() });
 
