@@ -16,7 +16,7 @@ describe("exercise1", () => {
 
     it('App should render your Hudini component', () => {
         const wrapper = mount(<App />);
-        let hudiniComponent = wrapper.find(Hudini)
+        let hudiniComponent = wrapper.find("#ex-1").find(Hudini)
         expect(hudiniComponent.exists(), 'could not find Hudini component').toBeTruthy()
     });
 

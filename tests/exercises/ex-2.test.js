@@ -17,13 +17,13 @@ describe("exercise2", () => {
     });
     it('App should render your Home component', () => {
         const wrapper = mount(<App />);
-        let homeComponent = wrapper.find(Home)
+        let homeComponent = wrapper.find("#ex-2").find(Home)
         expect(homeComponent.exists(), 'could not find a Home component in App').toBeTruthy()
     });
 
     it('App should render your Landing component', () => {
         const wrapper = mount(<App />);
-        let landingComponent = wrapper.find(Landing)
+        let landingComponent = wrapper.find("#ex-2").find(Landing)
         expect(landingComponent.exists(), 'could not find a Landing component in App').toBeTruthy()
     });
 
@@ -33,7 +33,7 @@ describe("exercise2", () => {
             user: "mockUser",
             store: [{ item: "mockItem", price: 3099, discount: 0.05, hottest: true }]
         }, function () {
-            const landing = wrapper.find(Landing)
+            const landing = wrapper.find("#ex-2").find(Landing)
             expect(landing.length, 'could not find the Landing component rendered by App').toBeGreaterThan(0)
 
             let text = landing.html()
@@ -44,7 +44,7 @@ describe("exercise2", () => {
 
     it("The Home component should render the Item component for every item in the store", () => {
         const wrapper = mount(<App />);
-        let itemComponent = wrapper.find(Home).find(Item)
+        let itemComponent = wrapper.find("#ex-2").find(Home).find(Item)
         expect(itemComponent.exists(), 'could not find an Item component rendered by the Home component').toBeTruthy()
     });
 
@@ -54,7 +54,7 @@ describe("exercise2", () => {
             user: "mockUser",
             store: [{ item: "mockName", price: 42, discount: 0.05, hottest: true }]
         }, function () {
-            let item = wrapper.find(Home).find(Item).children()
+            let item = wrapper.find("#ex-2").find(Home).find(Item).children()
             expect(item.exists(), 'could not find any instance of the Item component').toBeTruthy()
             expect(item.first().html(), 'the name of the item should be passed using props').toContain("mockName")
             expect(item.first().html(), 'the price of the item sould be passed using props').toContain(42)

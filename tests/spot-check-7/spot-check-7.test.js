@@ -16,7 +16,7 @@ describe("spotcheck7", () => {
     });
     it('The App component should render the Calendar component with props', () => {
         const wrapper = mount(<App />);
-        let calendarComponent = wrapper.find(Calendar);
+        let calendarComponent = wrapper.find("#spotcheck-7").find(Calendar);
         expect(calendarComponent.exists(), 'You must create a component called Calendar').toBeTruthy()
         let expectedProps = {
             reservations: [
@@ -30,7 +30,7 @@ describe("spotcheck7", () => {
     })
     it('The App component should render the Register component with props', () => {
         const wrapper = mount(<App />);
-        let registerComponent = wrapper.find(Register);
+        let registerComponent = wrapper.find("#spotcheck-7").find(Register);
         expect(registerComponent.exists(), 'You must create a component called Register').toBeTruthy()
         let expectedProps = {
             reservations: [
@@ -44,30 +44,20 @@ describe("spotcheck7", () => {
     })
     it('You must pass props using data from your state', () => {
         const wrapper = mount(<App />)
-        let registerComponent = wrapper.find(Register);
+        let registerComponent = wrapper.find("#spotcheck-7").find(Register);
         expect(registerComponent.first().props().reservations, 'props passed to the Register component did not utilize the state - make sure you are passing them using the key "reservations"').toEqual(wrapper.state().reservations)
-        let calendarComponent = wrapper.find(Calendar);
+        let calendarComponent = wrapper.find("#spotcheck-7").find(Calendar);
         expect(calendarComponent.first().props().reservations, 'props passed to the Calendar component did not utilize the state  - make sure you are passing them using the key "reservations"').toEqual(wrapper.state().reservations)
     })
     it('You must render a div on the page for each reservation', () => {
         const wrapper = mount(<App />);
-        let calendarDiv = wrapper.find(Calendar)
-        let registerDiv = wrapper.find(Register)
+        let calendarDiv = wrapper.find("#spotcheck-7").find(Calendar)
+        let registerDiv = wrapper.find("#spotcheck-7").find(Register)
         expect(calendarDiv.exists(), 'App should be rendering the Calendar component').toBeTruthy()
         expect(registerDiv.exists(), 'App should be rendering the Register component').toBeTruthy()
-        
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("Earl".toLowerCase())
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("Monday".toLowerCase())
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("2000".toLowerCase())
-
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Anni has a reservation on Wednesday @ 2015' rendered on the page").toContain('Anni'.toLowerCase())
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Anni has a reservation on Wednesday @ 2015' rendered on the page").toContain('Wednesday'.toLowerCase())
-        expect(calendarDiv.html().toLowerCase(), "could not find 'Anni has a reservation on Wednesday @ 2015' rendered on the page").toContain('2015'.toLowerCase())
-        
-        expect(registerDiv.html().toLowerCase(), "could not find 'Monday @ 2000' rendered on the page").toContain("Monday".toLowerCase())
-        expect(registerDiv.html().toLowerCase(), "could not find 'Monday @ 2000' rendered on the page").toContain("2000".toLowerCase())
-        
-        expect(registerDiv.html().toLowerCase(), "could not find 'Wednesday @ 2015' rendered on the page").toContain('Wednesday'.toLowerCase())
-        expect(registerDiv.html().toLowerCase(), "could not find 'Wednesday @ 2015' rendered on the page").toContain('2015'.toLowerCase())
+        expect(calendarDiv.html().toLowerCase(), "could not find 'Earl has a reservation on Monday @ 2000' rendered on the page").toContain("Earl has a reservation on Monday @ 2000".toLowerCase())
+        expect(calendarDiv.html().toLowerCase(), "could not find 'Anni has a reservation on Wednesday @ 2015' rendered on the page").toContain('Anni has a reservation on Wednesday @ 2015'.toLowerCase())
+        expect(registerDiv.html().toLowerCase(), "could not find 'Monday @ 2000' rendered on the page").toContain("Monday @ 2000".toLowerCase())
+        expect(registerDiv.html().toLowerCase(), "could not find 'Wednesday @ 2015' rendered on the page").toContain('Wednesday @ 2015'.toLowerCase())
     });
 })

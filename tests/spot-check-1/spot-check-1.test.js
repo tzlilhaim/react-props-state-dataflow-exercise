@@ -25,7 +25,7 @@ describe("spotcheck1", () => {
       });
       it('The App component should render the Company component with props', () => {
         const wrapper = mount(<App />);
-        let companyComponent = wrapper.find(Company);
+        let companyComponent = wrapper.find("#spotcheck-1").find(Company);
         expect(companyComponent.exists(), 'You must create a Component called Company').toBeTruthy()
         const expectedName = "Tesla"
         const actualName = companyComponent.first().props().name

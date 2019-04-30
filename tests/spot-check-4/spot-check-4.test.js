@@ -42,7 +42,7 @@ describe("spotcheck4", () => {
 
   it('The App component should render the Wardrobe component', () => {
     const wrapper = mount(<App />);
-    let wardrobeComponent = wrapper.find(Wardrobe);
+    let wardrobeComponent = wrapper.find("#spotcheck-4").find(Wardrobe);
     expect(wardrobeComponent.exists(), 'could not find Wardrobe component').toBeTruthy()
   })
 
