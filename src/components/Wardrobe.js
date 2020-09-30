@@ -1,5 +1,6 @@
-import Article from "./Article";
-import React, { Component } from 'react';
+import Article from "./Article"
+import React, { Component } from "react"
+import Item from "./Item"
 
 class Wardrobe extends Component {
   render() {
@@ -11,8 +12,9 @@ class Wardrobe extends Component {
       { type: "accessory", color: "lilac", size: "" },
     ]
 
-    return {/* your code here */ }
-
+    return wardrobe.map((item,index) => {
+      return <Article info={item} key={`sp4_${index}`}/>
+    })
   }
 }
 
